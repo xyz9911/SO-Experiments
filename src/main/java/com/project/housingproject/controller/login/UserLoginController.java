@@ -18,14 +18,17 @@ public class UserLoginController {
     @PostMapping(value = "/api/userlogin") //前后端交互
     @ResponseBody
     public Result customerLogin(@RequestBody User requestUser){
-
         // 对 html 标签进行转义，防止 XSS 攻击 ？？
         String uname = requestUser.getUNAME();
         uname = HtmlUtils.htmlEscape(uname);
         User user = userService.get(uname, requestUser.getUPASSWORD());
         if (null == user || user.getUVALIDSTATUS()==0){ //客户不存在或被封禁
+            System.out.println("登录失败");
+            System.out.print(user.getUPASSWORD());
             return new Result(404);
         }else { //客户存在且未封禁
+            System.out.println("成功登录");
+            System.out.println(user.getUPASSWORD());
             return new Result(200);
         }
     }

@@ -21,20 +21,14 @@ public class AdminLoginController {
 
         int adminid = requestAdmin.getADMINID();
         adminid =Integer.parseInt(HtmlUtils.htmlEscape(String.valueOf(adminid)));
-
-//        if (!Objects.equals("admin", username) || !Objects.equals("1234", requestUser.getPassword())) {
-//            System.out.println("账号密码错误！");
-//            return new Result(400);
-//        } else {
-//            System.out.println("账号密码正确！");
-//            return new Result(200);
-//        }
-
-
       Admin admin    = adminService.get(adminid, requestAdmin.getADMINPASSWORD());
         if (null == admin){ //管理员不存在
+            System.out.println("登录失败");
+            System.out.println(admin.getADMINPASSWORD());
             return new Result(404);
         }else { //管理员存在
+            System.out.println("登录失败");
+            System.out.println(admin.getADMINPASSWORD());
             return new Result(200);
 
         }
