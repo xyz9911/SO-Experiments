@@ -15,4 +15,5 @@ public interface AgentService {
     Page<AgentratingEntity> getAgentRatings(int aId, Pageable pageable);
     AgentratingEntity saveAgentRating(AgentratingEntity agentratingEntity);
     AgentView getAgentViewById(int aId);
+    AgentView getAgentViewByName(String name);
 }

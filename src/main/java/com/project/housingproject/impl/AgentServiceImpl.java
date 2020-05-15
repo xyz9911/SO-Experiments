@@ -64,4 +64,9 @@ public class AgentServiceImpl implements AgentService {
         AgentEntity agentEntity=agentRepository.findByAid(aId);
         return new AgentView(aId,agentEntity.getMid(),agentEntity.getAname(), agentEntity.getAcontact(),agentEntity.getAinfo(),agentEntity.getAavatar());
     }
+
+    @Override
+    public AgentView getAgentViewByName(String name) {
+        return agentRepository.findByAname(name);
+    }
 }

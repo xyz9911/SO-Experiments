@@ -1,6 +1,7 @@
 package com.project.housingproject.repositories;
 
 import com.project.housingproject.entities.UserEntity;
+import com.project.housingproject.viewInfo.UserView;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +14,6 @@ public interface UserRepository extends JpaRepository<UserEntity,Long> {
     List<Integer> findDistinctUid();
     UserEntity findByUid(int uId);
     Page<UserEntity> findByUvalidstatus(byte status, Pageable pageable);
+    @Query(value="select new com.project.housingproject.viewInfo.UserView(u.uid,u.uname,u.ugender,u.ucontact,u.uavatar) from UserEntity u where u.uname=?1")
+    UserView findByUname(String name);
 }

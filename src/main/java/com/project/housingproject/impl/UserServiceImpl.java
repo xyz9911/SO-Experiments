@@ -7,6 +7,7 @@ import com.project.housingproject.repositories.FavouriteRepository;
 import com.project.housingproject.repositories.HouseRepository;
 import com.project.housingproject.repositories.UserRepository;
 import com.project.housingproject.services.UserService;
+import com.project.housingproject.viewInfo.UserView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,10 +27,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private HouseRepository houseRepository;
 
-    @Override
-    public UserEntity getUserById(int uId) {
-        return userRepository.findByUid(uId);
-    }
+    //@Override
+    //public UserEntity getUserById(int uId) {
+    //    return userRepository.findByUid(uId);
+    //}
 
     @Override
     public Page<UserEntity> getUserByValidStatus(byte status, int pageNum) {
@@ -53,5 +54,10 @@ public class UserServiceImpl implements UserService {
             houseEntities.add(houseRepository.findByHid(favouriteEntity.getHid()));
         }
         return houseEntities;
+    }
+
+    @Override
+    public UserView getUserByName(String uname) {
+        return userRepository.findByUname(uname);
     }
 }

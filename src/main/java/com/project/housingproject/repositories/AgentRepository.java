@@ -17,4 +17,6 @@ public interface AgentRepository extends JpaRepository<AgentEntity,Long> {
     Page<AgentEntity> findByAnameContains(String aName,Pageable pageable);
     Page<AgentEntity> findByAvalidstatus(byte status,Pageable pageable);
     Page<AgentEntity> findByAverifystatus(byte status,Pageable pageable);
+    @Query(value="select new com.project.housingproject.viewInfo.AgentView(a.aid,a.mid,a.aname,a.acontact,a.ainfo,a.aavatar) from AgentEntity a where a.aname=?1")
+    AgentView findByAname(String name);
 }

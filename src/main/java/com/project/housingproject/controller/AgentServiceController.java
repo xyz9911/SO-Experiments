@@ -40,4 +40,9 @@ public class AgentServiceController {
     public AgentView showAgent(@PathVariable("aid")int aid){
         return agentService.getAgentViewById(aid);
     }
+
+    @RequestMapping(value = "agent/name",method = RequestMethod.GET)
+    public AgentView showAgentByName(@RequestParam("aname")String aname){
+        return agentService.getAgentViewByName(aname);
+    }
 }
