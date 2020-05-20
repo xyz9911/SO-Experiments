@@ -7,4 +7,5 @@ import java.io.IOException;
 public interface ExternalAPI {
     String getResult(int page) throws IOException, JSONException;
     String getWeather(String id) throws IOException, JSONException;
+    String getCurrentLocation() throws IOException, JSONException;
 }

@@ -53,4 +53,12 @@ public class ExternalAPIImpl implements ExternalAPI {  // 外部API
         System.out.println(json.toString());
         return json.toString();
     }
+
+    @Override
+    public String getCurrentLocation() throws IOException, JSONException {
+        String url = "https://api.map.baidu.com/location/ip?ak=pBwCDR7fP4vgWVkUFSHDpbNupbKmGT6r&coor=bd09ll";
+        JSONObject json = getRequestFromUrl(url);
+        System.out.println(json.toString());
+        return json.toString();
+    }
 }
