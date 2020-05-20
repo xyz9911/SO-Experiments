@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import java.net.URLConnection;
 
 @Service
-public class ExternalAPIImpl implements ExternalAPI {
+public class ExternalAPIImpl implements ExternalAPI {  // 外部API
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
@@ -43,6 +43,12 @@ public class ExternalAPIImpl implements ExternalAPI {
     public String getResult(int page) throws IOException, JSONException {
 // 请求示例 url 默认请求参数已经做URL编码
         String url = "http://api01.idataapi.cn:8000/news/qihoo?kw=%E6%88%BF%E6%BA%90&pageToken="+page+"&apikey=uwz1YRUYuYtSX6Y15FBww2Rq53W7ILqDgopdmCr0O8DXkWAvt10PPt4JgoToEKPz";
+        JSONObject json = getRequestFromUrl(url);
+        System.out.println(json.toString());
+        return json.toString();
+    }
+    public String getWeather(String id) throws IOException, JSONException {  //根据地区编号进行天气查询
+        String url = "http://api.map.baidu.com/weather/v1/?district_id=222405&ak=VZMGLRdK3GbYBCQpsK8acvi9qddB3KPf&data_type=all&district_id="+id;
         JSONObject json = getRequestFromUrl(url);
         System.out.println(json.toString());
         return json.toString();

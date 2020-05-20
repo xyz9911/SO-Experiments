@@ -20,6 +20,7 @@ public class NewsServiceController {
     @Autowired
     private ExternalAPI externalAPI;
 
+
     //已部署
     @RequestMapping(value = "news/home",method = RequestMethod.GET)
     public Page<NewsEntity> homeShowNewsController(){
@@ -48,4 +49,9 @@ public class NewsServiceController {
     public String showExternalNews(@PathVariable("page")int page) throws IOException, JSONException {
         return externalAPI.getResult(page);
     }
+    @RequestMapping(value = "getweather/{id}",method = RequestMethod.GET)
+    public String getWeather(@PathVariable("id") String id) throws IOException, JSONException {
+        return externalAPI.getWeather(id);
+    }
+
 }
