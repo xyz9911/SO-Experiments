@@ -20,7 +20,6 @@ public class UserServiceController {
     @Autowired
     private ExternalAPI externalAPI;
 
-    //未部署
     @RequestMapping(value = "user/favourite/{uid}",method = RequestMethod.GET)
     public List<HouseEntity> showFavourite(@PathVariable("uid")int uid){
         return userService.getFavourite(uid);
